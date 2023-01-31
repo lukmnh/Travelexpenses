@@ -3,6 +3,7 @@ package com.example.demo.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -52,6 +53,12 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public Employee getEmail(String email) {
+        return employeeRepository.findEmail(email);
+    }
+
+    @Override
+    public Employee getCurrentUser() {
+        String email = SecurityContextHolder.getContext().getAuthentication().getName();
         return employeeRepository.findEmail(email);
     }
 

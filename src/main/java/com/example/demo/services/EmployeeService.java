@@ -17,4 +17,6 @@ public interface EmployeeService {
     public Integer getIdByEmail(String email);
 
     public Employee getEmail(String email);
+
+    public Employee getCurrentUser();
 }

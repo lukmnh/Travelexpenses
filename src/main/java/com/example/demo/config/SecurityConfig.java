@@ -23,12 +23,20 @@ public class SecurityConfig {
                 auth
                         .antMatchers("/user-management/**").permitAll()
                         .antMatchers("/user/**").permitAll()
+                        .antMatchers("/api/approval/request-travel").hasAuthority("Manager")
+                        .antMatchers("/api/approval/settlement-request-manager").hasAuthority("Manager")
+                        .antMatchers("/api/approval/settlement-request-finance").hasAuthority("Finance")
+                        .antMatchers("/api/approval/decision-approval-request/**").hasAuthority("Manager")
+                        .antMatchers("/api/approval/decision-approvalManager-settlement/**").hasAuthority("Manager")
+                        .antMatchers("/api/approval/decision-approvalFinance-settlement/**").hasAuthority("Finance")
+                        .antMatchers("/api/approval/settlement/**").permitAll()
+                        .antMatchers("/api/approval/settlement-extends/**").permitAll()
                         // .anyRequest()
                         // .authenticated()
                         .and()
                         .formLogin()
                         .loginPage("/user-management/login")
-                        .loginProcessingUrl("/check")
+                        .loginProcessingUrl("/login")
                         .and()
                         .logout();
             } catch (Exception e) {

@@ -11,4 +11,5 @@ public interface UserService {
     public Object login(Login login);
 
     public Boolean changePassword(String password, Integer id);
+
 }

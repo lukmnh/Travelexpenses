@@ -34,6 +34,17 @@ public class Employee {
     @Column(name = "address")
     private String address;
 
+    @Column(name = "manager_id")
+    private Integer manager_id;
+
+    public Integer getManager_id() {
+        return manager_id;
+    }
+
+    public void setManager_id(Integer manager_id) {
+        this.manager_id = manager_id;
+    }
+
     @OneToOne
     @JoinColumn(name = "id", referencedColumnName = "id")
     private User user;
